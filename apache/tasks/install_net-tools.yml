@@ -1,0 +1,4 @@
+- name: Install net-tools
+  apt: 
+    name: net-tools
+    state: present

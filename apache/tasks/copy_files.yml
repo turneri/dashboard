@@ -1,0 +1,22 @@
+- name: Copy index.html to web root
+  copy:
+    src: index.html
+    dest: /var/www/html/index.html
+    owner: www-data
+    group: www-data
+    mode: '0644'
+
+- name: Copy apache2.conf to server
+  copy:
+    src: apache2.conf
+    dest: /etc/apache2/apache2.conf
+
+- name: Copy 000-default.conf to server
+  copy:
+    src: 000-default.conf
+    dest: /etc/apache2/sites-available/000-default.conf 
+
+- name: Restart apace to ensure conf files are in use
+  ansible.builtin.systemd:
+    name: apache2
+    state: restarted
