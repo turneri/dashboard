@@ -1,0 +1,5 @@
+#!/bin/bash
+
+
+#Run the playbook
+ansible-playbook site.yml -i inventory.yml

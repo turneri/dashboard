@@ -1,0 +1,10 @@
+---
+- name: Deploy the scraper
+  hosts: webservers
+  become: true
+  remote_user: ansible
+  gather_facts: yes
+  roles:
+
+    - role: apache
+    

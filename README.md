@@ -1,2 +1,20 @@
 # scraper
-TBD
+
+If you want to use TSL you can generate a self signed cert by running
+
+sudo openssl req -x509 -nodes -days 365 \
+  -newkey rsa:2048 \
+  -keyout ./apache/files/apache-selfsigned.key \
+  -out ./apache/files/apache-selfsigned.crt
+
+in this directory 
+
+You'll be prompted for info. You can enter dummy values. Use the address of the target host when asked for Common Name (CN)
+
+You need to add the certificate to your system trusted certificates if you're doing this
+
+
+
+
+
+
