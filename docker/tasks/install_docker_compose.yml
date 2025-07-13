@@ -1,0 +1,5 @@
+- name: Install Docker Compose plugin
+  get_url:
+    url: https://github.com/docker/compose/releases/download/v2.24.1/docker-compose-linux-armv7
+    dest: /usr/local/lib/docker/cli-plugins/docker-compose
+    mode: '0755'
