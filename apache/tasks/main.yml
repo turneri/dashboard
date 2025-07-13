@@ -11,6 +11,9 @@
   - name: Include copy_files.yml
     include_tasks: copy_files.yml 
 
+  - name: Enable site
+    include_tasks: enable_site.yml
+
   - name: Include install_net-tools.yml
     include_tasks: install_net-tools.yml
          

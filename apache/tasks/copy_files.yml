@@ -11,12 +11,27 @@
     src: apache2.conf
     dest: /etc/apache2/apache2.conf
 
+- name: Copy local-ssl.conf to server
+  copy:
+    src: local-ssl.conf
+    dest: /etc/apache2/sites-available/local-ssl.conf
+
 - name: Copy 000-default.conf to server
   copy:
     src: 000-default.conf
     dest: /etc/apache2/sites-available/000-default.conf 
 
-- name: Restart apace to ensure conf files are in use
+- name: Copy certificate file to server
+  copy:
+    src: apache-selfsigned.crt
+    dest: /etc/ssl/certs/apache-selfsigned.crt
+    
+- name: Copy certificate keyfile to server
+  copy:
+    src: apache-selfsigned.key
+    dest: /etc/ssl/private/apache-selfsigned.key
+
+- name: Restart apache to ensure conf files are in use
   ansible.builtin.systemd:
     name: apache2
     state: restarted
