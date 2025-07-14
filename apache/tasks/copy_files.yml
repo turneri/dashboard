@@ -28,15 +28,14 @@
     src: apache2.conf
     dest: /opt/apache/conf/apache2.conf
 
-- name: Copy virtual host configs
-  copy:
-    src: local-ssl.conf
-    dest: /opt/apache/conf/sites-available/local-ssl.conf
-
 - name: Copy default site config
   copy:
-    src: 000-default.conf
+    src: apache/files/000-default.conf
     dest: /opt/apache/conf/sites-available/000-default.conf
+
+
+
+# Comment these out if not usin TLS
 
 - name: Copy certificate
   copy:

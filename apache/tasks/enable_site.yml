@@ -1,3 +1,0 @@
-- name: Enable default conf site
-  ansible.builtin.command:
-    cmd: a2ensite 000-default.conf
