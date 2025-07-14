@@ -1,3 +1,9 @@
+- name: Create Docker CLI plugins directory
+  file:
+    path: /usr/local/lib/docker/cli-plugins
+    state: directory
+    mode: '0755'
+
 - name: Install Docker Compose plugin
   get_url:
     url: https://github.com/docker/compose/releases/download/v2.24.1/docker-compose-linux-armv7
