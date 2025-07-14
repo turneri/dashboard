@@ -29,5 +29,17 @@ services:
     - /opt/apache/certs:/usr/local/apache2/conf/certs
     - /opt/apache/html:/usr/local/apache2/htdocs
 
+webapp:
+    build: ../webapp
+    container_name: webapp
+    env_file:
+      - secrets.env
+    depends_on:
+      - db
+      - cache
+    expose:
+      - "8000"
+
+
 volumes:
   db-data:
