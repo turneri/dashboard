@@ -13,7 +13,11 @@ You'll be prompted for info. You can enter dummy values. Use the address of the 
 
 You need to add the certificate to your system trusted certificates if you're doing this
 
-oma setup
+Current bugs:
+  The playbook fails with no root access if the sudo cache has been emptied on the host machine, quickfix: run any sudo command as user ansible on host machine
+
+
+My setup (nothing to do with the repo just here temporarily)
 
 sudo apt install keychain -y
 sudo apt install starship -y
