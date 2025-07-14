@@ -1,3 +1,4 @@
 inventory.yml
 apache/files/apache-selfsigned.crt
 apache/files/apache-selfsigned.key
+secrets.env
