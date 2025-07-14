@@ -2,20 +2,44 @@ services:
   db:
     image: postgres:15-alpine
     restart: always
+    ports:
+      - 5432:5432
     env_file:
-      - secrets.env
+      - ./secrets.env
     volumes:
       - db-data:/var/lib/postgresql/data
 
   cache:
     image: redis:alpine
     env_file:
-      - secrets.env
-    command: redis-server --requirepass ${REDIS_PASSWORD}
+      - ./secrets.env
+    ports:
+      - 6379:6379
+    command: redis-server --requirepass tosisalainensalis
 
 
-  app:
+  apache:
    image: httpd:2.4-alpine
+   ports:
+    - 80:80
+    - 443:443
+   volumes:
+    - /opt/apache/conf/httpd.conf:/usr/local/apache2/conf/httpd.conf
+    - /opt/apache/conf/sites-available/000-default.conf:/usr/local/apache2/conf/extra/000-default.conf
+    - /opt/apache/certs:/usr/local/apache2/conf/certs
+    - /opt/apache/html:/usr/local/apache2/htdocs
+
+  webapp:
+    build: /opt/webapp
+    container_name: webapp
+    env_file:
+      - ./secrets.env
+    depends_on:
+      - db
+      - cache
+    expose:
+      - "5000"
+
 
 volumes:
   db-data:

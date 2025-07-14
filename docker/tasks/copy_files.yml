@@ -5,5 +5,5 @@
 
 - name: copy secrets.env to server
   copy:
-    src: secrets.env
+    src: ../secrets.env
     dest: /home/ansible/
