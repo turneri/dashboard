@@ -40,7 +40,7 @@
 
 - name: Copy default site config
   copy:
-    src: apache/files/000-default.conf
+    src: 000-default.conf
     dest: /opt/apache/conf/sites-available/000-default.conf
 
 

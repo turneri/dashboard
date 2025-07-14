@@ -7,21 +7,13 @@
   roles:
     - role: webapp
     
-- name: Deploy docker compose
+- name: Deploy docker compose cluster
   hosts: webservers
   become: true
   remote_user: ansible
   gather_facts: yes
   roles:
     - role: docker
-
-- name: Deploy apache
-  hosts: webservers
-  become: true
-  remote_user: ansible
-  gather_facts: yes
-  roles:
-    - role: apache
 
 - name: Start the service
   hosts: webservers
