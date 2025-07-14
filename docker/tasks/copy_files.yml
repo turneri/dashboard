@@ -1,0 +1,9 @@
+- name: Copy docker-compose.yml to server
+  copy:
+    src: docker-compose.yml
+    dest: /home/ansible/
+
+- name: copy secrets.env to server
+  copy:
+    src: secrets.env
+    dest: /home/ansible/

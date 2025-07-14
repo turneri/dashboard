@@ -13,8 +13,18 @@ You'll be prompted for info. You can enter dummy values. Use the address of the 
 
 You need to add the certificate to your system trusted certificates if you're doing this
 
+oma setup
+
+sudo apt install keychain -y
+sudo apt install starship -y
+
+./bashrch
+	eval "$(starship init bash)"
+	alias run='./run'
+	eval "$(keychain --eval id_ed25519)"
 
 
+keychain
 
 
 

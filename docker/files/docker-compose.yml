@@ -1,0 +1,21 @@
+services:
+  db:
+    image: postgres:15-alpine
+    restart: always
+    env_file:
+      - secrets.env
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+  cache:
+    image: redis:alpine
+    env_file:
+      - secrets.env
+    command: redis-server --requirepass ${REDIS_PASSWORD}
+
+
+  app:
+   image: httpd:2.4-alpine
+
+volumes:
+  db-data:

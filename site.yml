@@ -5,6 +5,5 @@
   remote_user: ansible
   gather_facts: yes
   roles:
-
+    - role: docker
     - role: apache
-    
