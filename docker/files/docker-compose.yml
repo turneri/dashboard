@@ -15,7 +15,7 @@ services:
       - ./secrets.env
     ports:
       - 6379:6379
-    command: redis-server --requirepass tosisalainensalis
+    command: sh -c "redis-server --requirepass \"$REDIS_PASSWORD\""
 
 
   apache:
@@ -49,6 +49,9 @@ services:
       - ./homarr/appdata:/appdata
     env_file:
       - ./secrets.env
+    environment:
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - REDIS_URL=redis://default:${REDIS_PASSWORD}@cache:6379
 
 volumes:
   db-data:
