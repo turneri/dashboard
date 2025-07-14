@@ -2,11 +2,11 @@
 - name: Install docker
   include_tasks: install_docker.yml
 
-#- name: Deploy docker_compose.yml
- # include_tasks: deploy_docker_compose.yml
-
 - name: Add ansible user to docker group
   include_tasks: add_user_group.yml
 
 - name: Copy files to host
   include_tasks: copy_files.yml
+
+- name: Include install_net-tools.yml
+  include_tasks: install_net-tools.yml

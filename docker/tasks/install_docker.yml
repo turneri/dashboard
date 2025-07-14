@@ -70,8 +70,14 @@
   shell: curl -fsSL https://get.docker.com | sh
   when: docker_installed.failed
   
-- name: Enable and start Docker
-  systemd:
-    name: docker
-    enabled: true
-    state: started
+- name: Try starting Docker with systemd, but continue on failure
+  block:
+    - name: Enable and start Docker
+      systemd:
+        name: docker
+        enabled: true
+        state: started
+  rescue:
+    - name: Warn that systemd is not available
+      debug:
+        msg: "*** Skipping Docker startup via systemd probably inside a container.***\n***you have to start it manually***"
