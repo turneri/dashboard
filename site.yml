@@ -24,10 +24,10 @@
     - role: docker
 
 
-- name: Start the service
-  hosts: webservers
-  become: true
-  remote_user: ansible
-  gather_facts: yes
-  roles:
-    - role: startup
+#- name: Start the service
+#  hosts: webservers
+#  become: true
+#  remote_user: ansible
+#  gather_facts: yes
+#  roles:
+#   - role: startup

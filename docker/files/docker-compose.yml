@@ -4,15 +4,11 @@ services:
     restart: always
     ports:
       - 5432:5432
-    env_file:
-      - ./secrets.env
     volumes:
       - db-data:/var/lib/postgresql/data
 
   cache:
     image: redis:alpine
-    env_file:
-      - ./secrets.env
     ports:
       - 6379:6379
     command: sh -c "redis-server --requirepass \"$REDIS_PASSWORD\""
@@ -47,8 +43,6 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock # Optional, only if you want docker integration
       - ./homarr/appdata:/appdata
-    env_file:
-      - ./secrets.env
     environment:
       - REDIS_PASSWORD=${REDIS_PASSWORD}
       - REDIS_URL=redis://default:${REDIS_PASSWORD}@cache:6379
@@ -57,8 +51,6 @@ services:
     build: /opt/processor
     container_name: processor
     restart: unless-stopped
-    env_file:
-      - ./secrets.env
     
     depends_on:
       - db
@@ -72,8 +64,9 @@ services:
     image: dpage/pgadmin4:latest
     container_name: pgadmin
     restart: unless-stopped
-    env_file:
-      - ./secrets.env
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
     ports:
       - 5050:80
     networks:
