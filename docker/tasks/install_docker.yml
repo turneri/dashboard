@@ -23,11 +23,43 @@
     mode: '0644'
 
 
+- name: Map ansible_architecture to Docker arch
+  set_fact:
+    docker_arch: >-
+      {{ (
+          'amd64' if ansible_architecture == 'x86_64' else
+          'arm64' if ansible_architecture == 'aarch64' else
+          'armhf' if ansible_architecture == 'armv7l' else
+          'amd64'
+      ) | trim }}
+
+
+- name: Set Docker repo base URL depending on distribution
+  set_fact:
+    docker_repo_base: >-
+      {% if ansible_distribution | lower == 'ubuntu' %}
+      https://download.docker.com/linux/ubuntu
+      {% elif ansible_distribution | lower == 'debian' %}
+      https://download.docker.com/linux/debian
+      {% else %}
+      ""
+      {% endif %}
+
+- name: Fail if unsupported distro
+  fail:
+    msg: "Unsupported distribution {{ ansible_distribution }} for Docker repo"
+  when: docker_repo_base == ""
+
+- name: Show final repo URL
+  debug:
+    msg: "Docker repo URL: deb [arch={{ docker_arch }} signed-by=/etc/apt/keyrings/docker.asc] {{ docker_repo_base }} {{ ansible_distribution_release }} stable"
+
 - name: Add Docker apt repository
   apt_repository:
-    repo: "deb [arch=armhf signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian {{ ansible_distribution_release }} stable"
+    repo: "deb [arch={{ docker_arch }} signed-by=/etc/apt/keyrings/docker.asc] {{ docker_repo_base }} {{ ansible_distribution_release }} stable"
     filename: docker
     state: present
+
 
 - name: Check if Docker is installed
   command: docker --version
