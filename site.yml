@@ -6,6 +6,14 @@
   gather_facts: yes
   roles:
     - role: webapp
+
+- name: Deploy the processor
+  hosts: webservers
+  become: true
+  remote_user: ansible
+  gather_facts: yes
+  roles:
+    - role: processor
     
 - name: Deploy docker compose cluster
   hosts: webservers
@@ -14,6 +22,7 @@
   gather_facts: yes
   roles:
     - role: docker
+
 
 - name: Start the service
   hosts: webservers

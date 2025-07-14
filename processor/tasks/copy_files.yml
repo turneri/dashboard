@@ -1,0 +1,25 @@
+- name: Create processor folders
+  file:
+    path: "/opt/processor/app"
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Copy processor source (including app folder)
+  copy:
+    src: app/
+    dest: /opt/processor/app/
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Copy Dockerfile to processor root
+  copy:
+    src: Dockerfile
+    dest: /opt/processor
+
+- name: copy requirements.txt to processor root
+  copy:
+    src: requirements.txt
+    dest: /opt/processor

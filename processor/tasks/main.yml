@@ -1,2 +1,2 @@
----
-# tasks file for processor
+- name: Copy files to host
+  include_tasks: copy_files.yml

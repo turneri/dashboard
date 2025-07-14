@@ -29,16 +29,16 @@ services:
     - /opt/apache/certs:/usr/local/apache2/conf/certs
     - /opt/apache/html:/usr/local/apache2/htdocs
 
-  webapp:
-    build: /opt/webapp
-    container_name: webapp
-    env_file:
-      - ./secrets.env
-    depends_on:
-      - db
-      - cache
-    expose:
-      - "5000"
+#  webapp:
+#    build: /opt/webapp
+#    container_name: webapp
+#    env_file:
+#      - ./secrets.env
+#    depends_on:
+#      - db
+#      - cache
+#    expose:
+#      - "5000"
 
   homarr:
     container_name: homarr
@@ -52,6 +52,32 @@ services:
     environment:
       - REDIS_PASSWORD=${REDIS_PASSWORD}
       - REDIS_URL=redis://default:${REDIS_PASSWORD}@cache:6379
+
+  processor:
+    build: /opt/processor
+    container_name: processor
+    restart: unless-stopped
+    env_file:
+      - ./secrets.env
+    
+    depends_on:
+      - db
+      - cache
+    networks:
+      - default
+    ports:
+      - 8000:8000
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin
+    restart: unless-stopped
+    env_file:
+      - ./secrets.env
+    ports:
+      - 5050:80
+    networks:
+      - default
 
 volumes:
   db-data:
