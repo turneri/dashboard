@@ -5,14 +5,14 @@ services:
     ports:
       - 5432:5432
     env_file:
-      - ../secrets.env
+      - ./secrets.env
     volumes:
       - db-data:/var/lib/postgresql/data
 
   cache:
     image: redis:alpine
     env_file:
-      - ../secrets.env
+      - ./secrets.env
     ports:
       - 6379:6379
     command: redis-server --requirepass tosisalainensalis
@@ -29,7 +29,7 @@ services:
     - /opt/apache/certs:/usr/local/apache2/conf/certs
     - /opt/apache/html:/usr/local/apache2/htdocs
 
-webapp:
+  webapp:
     build: /opt/webapp
     container_name: webapp
     env_file:

@@ -1,7 +1,7 @@
 requests
 pandas
 numpy
-beautifulsoup
+beautifulsoup4
 flask
 redis
 psycopg2-binary
