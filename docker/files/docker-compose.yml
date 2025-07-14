@@ -40,6 +40,17 @@ services:
     expose:
       - "5000"
 
+  homarr:
+    container_name: homarr
+    image: ghcr.io/homarr-labs/homarr:latest
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock # Optional, only if you want docker integration
+      - ./homarr/appdata:/appdata
+    environment:
+      - SECRET_ENCRYPTION_KEY=61719453bce51d30b3b3917e4183b5891edf18e7d99d269e4009c15545d12377
+    ports:
+      - '7575:7575'
 
 volumes:
   db-data:
