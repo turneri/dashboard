@@ -49,8 +49,6 @@ services:
       - ./homarr/appdata:/appdata
     env_file:
       - ./secrets.env
-    ports:
-      - '7575:7575'
 
 volumes:
   db-data:
