@@ -1,2 +1,6 @@
----
-# tasks file for webapp
+- name: Update apt cache
+  apt:
+    update_cache: yes
+
+- name: Copy files to host
+  include_tasks: copy_files.yml

@@ -30,10 +30,10 @@ services:
     - /opt/apache/html:/usr/local/apache2/htdocs
 
 webapp:
-    build: ../webapp
+    build: /opt/webapp
     container_name: webapp
     env_file:
-      - ../secrets.env
+      - ./secrets.env
     depends_on:
       - db
       - cache
