@@ -1,7 +1,10 @@
 <html>
   <body>
-    <h1>Welcome to my server!</h1>
-    <p>Deployed using Ansible.</p>
-    <a href="tomcat/">Tomcat here!</a>
+    <a id="tomarr-link">Tomarr here!</a>
+
+    <script>
+      const host = window.location.hostname;
+      document.getElementById("tomarr-link").href = `http://${host}:7575`;
+    </script>
   </body>
 </html>
