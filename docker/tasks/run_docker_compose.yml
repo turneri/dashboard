@@ -1,0 +1,5 @@
+- name: Deploy Docker Compose for Apache
+  template:
+    src: docker-compose.yml
+    dest: /opt/apache/docker-compose.yml
+  become: true

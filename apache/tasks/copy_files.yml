@@ -1,37 +1,50 @@
-- name: Copy index.html to web root
+- name: Create Apache Docker folders
+  file:
+    path: "/opt/apache/{{ item }}"
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+  loop:
+    - html
+    - conf/sites-available
+    - certs
+
+- name: Copy docker-compatible Apache config
+  copy:
+    src: httpd.conf
+    dest: /opt/apache/conf/httpd.conf
+
+- name: Copy index.html to container web root
   copy:
     src: index.html
-    dest: /var/www/html/index.html
-    owner: www-data
-    group: www-data
+    dest: /opt/apache/html/index.html
+    owner: root
+    group: root
     mode: '0644'
 
-- name: Copy apache2.conf to server
+- name: Copy main Apache config
   copy:
     src: apache2.conf
-    dest: /etc/apache2/apache2.conf
+    dest: /opt/apache/conf/apache2.conf
 
-- name: Copy local-ssl.conf to server
+- name: Copy virtual host configs
   copy:
     src: local-ssl.conf
-    dest: /etc/apache2/sites-available/local-ssl.conf
+    dest: /opt/apache/conf/sites-available/local-ssl.conf
 
-- name: Copy 000-default.conf to server
+- name: Copy default site config
   copy:
     src: 000-default.conf
-    dest: /etc/apache2/sites-available/000-default.conf 
+    dest: /opt/apache/conf/sites-available/000-default.conf
 
-- name: Copy certificate file to server
+- name: Copy certificate
   copy:
     src: apache-selfsigned.crt
-    dest: /etc/ssl/certs/apache-selfsigned.crt
-    
-- name: Copy certificate keyfile to server
+    dest: /opt/apache/certs/apache-selfsigned.crt
+
+- name: Copy key
   copy:
     src: apache-selfsigned.key
-    dest: /etc/ssl/private/apache-selfsigned.key
+    dest: /opt/apache/certs/apache-selfsigned.key
 
-- name: Restart apache to ensure conf files are in use
-  ansible.builtin.systemd:
-    name: apache2
-    state: restarted

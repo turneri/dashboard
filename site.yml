@@ -1,9 +1,16 @@
 ---
-- name: Deploy the scraper
+- name: Deploy docker
   hosts: webservers
   become: true
   remote_user: ansible
   gather_facts: yes
   roles:
     - role: docker
-    #- role: apache
+
+- name: Deploy apache
+  hosts: webservers
+  become: true
+  remote_user: ansible
+  gather_facts: yes
+  roles:
+    - role: apache

@@ -12,10 +12,10 @@ services:
   cache:
     image: redis:alpine
     env_file:
+      - secrets.env
     ports:
       - 6379:6379
-      - secrets.env
-    command: redis-server --requirepass ${REDIS_PASSWORD}
+    command: redis-server --requirepass tosisalainensalis
 
 
   apache:
@@ -23,6 +23,11 @@ services:
    ports:
     - 80:80
     - 443:443
+   volumes:
+    - /opt/apache/conf/httpd.conf:/usr/local/apache2/conf/httpd.conf
+    - /opt/apache/conf/sites-available/000-default.conf:/usr/local/apache2/conf/extra/000-default.conf
+    - /opt/apache/certs:/usr/local/apache2/conf/certs
+    - /opt/apache/html:/usr/local/apache2/htdocs
 
 volumes:
   db-data:
