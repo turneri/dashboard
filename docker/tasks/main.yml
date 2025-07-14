@@ -5,8 +5,8 @@
 - name: Install docker
   include_tasks: install_docker.yml
 
-- name: Install docker compose
-  include_tasks: install_docker_compose.yml
+- name: Deploy docker_compose.yml
+  include_tasks: deploy_docker_compose.yml
 
 - name: Add ansible user to docker group
   include_tasks: add_user_group.yml
