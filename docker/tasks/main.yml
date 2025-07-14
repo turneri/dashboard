@@ -12,4 +12,4 @@
   include_tasks: install_net-tools.yml
 
 - name: Add user to docker group
-  include_tasks: add_user_group
+  include_tasks: add_user_group.yml
