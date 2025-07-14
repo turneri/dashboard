@@ -7,7 +7,7 @@
   roles:
     - role: webapp
     
-- name: Deploy docker
+- name: Deploy docker compose
   hosts: webservers
   become: true
   remote_user: ansible
