@@ -70,8 +70,8 @@
   shell: curl -fsSL https://get.docker.com | sh
   when: docker_installed.failed
   
-#- name: Enable and start Docker
-#  systemd:
-#    name: docker
-#    enabled: true
-#    state: started
+- name: Enable and start Docker
+  systemd:
+    name: docker
+    enabled: true
+    state: started
