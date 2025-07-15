@@ -6,6 +6,7 @@
   gather_facts: yes
   roles:
     - role: webapp
+  tags: [webapp]
 
 - name: Deploy the processor
   hosts: webservers
@@ -14,6 +15,7 @@
   gather_facts: yes
   roles:
     - role: processor
+  tags: [processor]
     
 - name: Deploy docker compose cluster
   hosts: webservers
@@ -22,6 +24,7 @@
   gather_facts: yes
   roles:
     - role: docker
+  tags: [docker]
 
 
 #- name: Start the service
@@ -31,3 +34,4 @@
 #  gather_facts: yes
 #  roles:
 #   - role: startup
+#  tags: [start]
