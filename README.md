@@ -16,6 +16,8 @@ You need to add the certificate to your system trusted certificates if you're do
 Current bugs:
   The playbook fails with no root access if the sudo cache has been emptied on the host machine, quickfix: run any sudo command as user ansible on host machine
 
+  Dashboard web-search only works if you want to search for the rapper DDG using duckduckgo.com 
+
 
 My setup (nothing to do with the repo just here temporarily)
 
