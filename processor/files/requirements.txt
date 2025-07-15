@@ -4,3 +4,4 @@ redis
 beautifulsoup4
 requests
 gunicorn
+redis[hiredis]

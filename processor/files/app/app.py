@@ -48,4 +48,3 @@ def parse():
     conn.commit()
 
     return jsonify({"stored_title": title})
-
