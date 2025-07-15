@@ -1,0 +1,7 @@
+flask
+psycopg2-binary
+redis
+beautifulsoup4
+requests
+gunicorn
+redis[hiredis]

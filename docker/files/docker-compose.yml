@@ -4,18 +4,19 @@ services:
     restart: always
     ports:
       - 5432:5432
-    env_file:
-      - ./secrets.env
     volumes:
       - db-data:/var/lib/postgresql/data
 
   cache:
     image: redis:alpine
-    env_file:
-      - ./secrets.env
     ports:
       - 6379:6379
-    command: sh -c "redis-server --requirepass \"$REDIS_PASSWORD\""
+    env_file:
+      - .env
+    environment:
+      - REDIS_PASSWORD
+    command: >
+      sh -c "redis-server --requirepass \"$REDIS_PASSWORD\""
 
 
   apache:
@@ -29,16 +30,16 @@ services:
     - /opt/apache/certs:/usr/local/apache2/conf/certs
     - /opt/apache/html:/usr/local/apache2/htdocs
 
-  webapp:
-    build: /opt/webapp
-    container_name: webapp
-    env_file:
-      - ./secrets.env
-    depends_on:
-      - db
-      - cache
-    expose:
-      - "5000"
+#  webapp:
+#    build: /opt/webapp
+#    container_name: webapp
+#    env_file:
+#      - ./secrets.env
+#    depends_on:
+#      - db
+#      - cache
+#    expose:
+#      - "5000"
 
   homarr:
     container_name: homarr
@@ -48,10 +49,30 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock # Optional, only if you want docker integration
       - ./homarr/appdata:/appdata
     env_file:
-      - ./secrets.env
+    - .env
     environment:
-      - REDIS_PASSWORD=${REDIS_PASSWORD}
-      - REDIS_URL=redis://default:${REDIS_PASSWORD}@cache:6379
+      - REDIS_PASSWORD
+      - REDIS_URL
+
+  processor:
+    build: /opt/processor
+    container_name: processor
+    restart: unless-stopped
+    
+    depends_on:
+      - db
+      - cache
+    networks:
+      - default
+    ports:
+      - 8000:8000
+    env_file:
+      - .env
+    environment:
+      - REDIS_HOST
+      - REDIS_PASSWORD
+      - REDIS_URL
+
 
 volumes:
   db-data:

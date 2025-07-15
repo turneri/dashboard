@@ -1,5 +1,8 @@
 #!/bin/bash
 
-
-#Run the playbook
-ansible-playbook site.yml -i inventory.yml
+# Check for tag args and run the playbook
+if [ -n "$1" ]; then
+  ansible-playbook site.yml -i inventory.yml --tags "$1"
+else
+  ansible-playbook site.yml -i inventory.yml
+fi

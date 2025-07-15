@@ -3,11 +3,6 @@
     src: docker-compose.yml
     dest: /home/ansible/
 
-- name: copy secrets.env to server
-  copy:
-    src: ../secrets.env
-    dest: /home/ansible/
-
 - name: Create Apache Docker folders
   file:
     path: "/opt/apache/{{ item }}"
@@ -19,6 +14,7 @@
     - html
     - conf/sites-available
     - certs
+    
 
 - name: Copy docker-compatible Apache config
   copy:

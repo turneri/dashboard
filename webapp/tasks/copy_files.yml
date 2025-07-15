@@ -23,3 +23,13 @@
   copy:
     src: requirements.txt
     dest: /opt/webapp
+
+- name: copy secrets.env to server
+  copy:
+    src: ../secrets.env
+    dest: /home/ansible/
+
+- name: copy .env to server
+  copy:
+    src: ../.env
+    dest: /home/ansible/
