@@ -11,6 +11,8 @@ services:
     image: redis:alpine
     ports:
       - 6379:6379
+    env_file:
+      - .env
     environment:
       - REDIS_PASSWORD
     command: >
@@ -46,6 +48,8 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock # Optional, only if you want docker integration
       - ./homarr/appdata:/appdata
+    env_file:
+    - .env
     environment:
       - REDIS_PASSWORD
       - REDIS_URL
@@ -62,6 +66,12 @@ services:
       - default
     ports:
       - 8000:8000
+    env_file:
+      - .env
+    environment:
+      - REDIS_HOST
+      - REDIS_PASSWORD
+      - REDIS_URL
 
 
 volumes:
