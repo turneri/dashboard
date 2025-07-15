@@ -1,0 +1,2 @@
+- name: Copy env file to host
+  include_tasks: copy_env.yml

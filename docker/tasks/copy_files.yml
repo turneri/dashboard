@@ -14,6 +14,7 @@
     - html
     - conf/sites-available
     - certs
+    
 
 - name: Copy docker-compatible Apache config
   copy:

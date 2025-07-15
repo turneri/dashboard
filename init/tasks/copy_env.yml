@@ -1,0 +1,4 @@
+- name: copy .env to server
+  copy:
+    src: ../.env
+    dest: /home/ansible/
