@@ -9,14 +9,7 @@
     - role: init
   tags: [init]
 
-#- name: Deploy webapp
-#  hosts: webservers
-##  become: true
- # remote_user: ansible
- # gather_facts: yes
- ## roles:
-  #  - role: webapp
-  #tags: [webapp]
+
 
 - name: Deploy the processor
   hosts: webservers
@@ -36,6 +29,9 @@
     - role: docker
   tags: [docker]
 
+
+# Comment this out if you want to autostart the service
+# To manually start (for constant log output) ssh ansible@your.server and run docker compose up
 
 #- name: Start the service
 #  hosts: webservers
