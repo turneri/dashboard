@@ -1,5 +1,5 @@
 inventory.yml
-apache/files/apache-selfsigned.crt
-apache/files/apache-selfsigned.key
+docker/files/apache-selfsigned.crt
+docker/files/apache-selfsigned.key
 testingenv
 .env
