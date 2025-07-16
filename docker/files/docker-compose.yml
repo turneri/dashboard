@@ -30,17 +30,6 @@ services:
     - /opt/apache/certs:/usr/local/apache2/conf/certs
     - /opt/apache/html:/usr/local/apache2/htdocs
 
-#  webapp:
-#    build: /opt/webapp
-#    container_name: webapp
-#    env_file:
-#      - ./secrets.env
-#    depends_on:
-#      - db
-#      - cache
-#    expose:
-#      - "5000"
-
   homarr:
     container_name: homarr
     image: ghcr.io/homarr-labs/homarr:latest
