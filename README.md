@@ -11,9 +11,12 @@ chmod -x requirements
 ./requirements
 ```
 
-After installation is finished, run:
+After installation is finished:
+```bash
+./run
+```
 
-*(Note: Right now the setup does not start up automatically. Check `site.yml` for more info.)*
+*(Note: Right now the autostart module is commented out. Check `site.yml` for more info.)*
 
 ## Processor module
 
