@@ -1,0 +1,6 @@
+webservers:
+  hosts:
+      server:
+        ansible_host: YOUR_HOSTNAME_HERE
+        ansible_user: ansible
+        ansible_become_password: ""
