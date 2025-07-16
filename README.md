@@ -45,7 +45,7 @@ You need to add the certificate to your system's trusted certificates if you're 
 - The playbook fails with no root access if the sudo cache has been emptied on the host machine.  
   **Quick fix**: run any `sudo` command as user `ansible` on the host machine.
 
-- Dashboard web search only works if you want to search for the rapper DDG using [duckduckgo.com](https://duckduckgo.com)
+- Dashboard web search only works if you configure the default search as a search engine
 
 ## TODO
 
