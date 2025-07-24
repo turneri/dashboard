@@ -50,4 +50,4 @@ You need to add the certificate to your system's trusted certificates if you're 
 ## TODO
 
 - Make TLS optional
-
+- Fix the sudo cache bug
