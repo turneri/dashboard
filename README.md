@@ -29,8 +29,8 @@ If you want to use TLS, you can generate a self-signed cert by running:
 ```bash
 sudo openssl req -x509 -nodes -days 365 \
   -newkey rsa:2048 \
-  -keyout ./apache/files/apache-selfsigned.key \
-  -out ./apache/files/apache-selfsigned.crt
+  -keyout ./docker/files/apache-selfsigned.key \
+  -out ./docker/files/apache-selfsigned.crt
 ```
 
 in this directory.
