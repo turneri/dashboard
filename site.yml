@@ -20,7 +20,7 @@
     - role: processor
   tags: [processor]
 
-  - name: Deploy the pihole
+- name: Deploy the pihole
   hosts: webservers
   become: true
   remote_user: ansible
