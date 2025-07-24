@@ -19,6 +19,15 @@
   roles:
     - role: processor
   tags: [processor]
+
+  - name: Deploy the pihole
+  hosts: webservers
+  become: true
+  remote_user: ansible
+  gather_facts: yes
+  roles:
+    - role: pihole
+  tags: [pihole]
     
 - name: Deploy docker compose cluster
   hosts: webservers
