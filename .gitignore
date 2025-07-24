@@ -3,3 +3,4 @@ docker/files/apache-selfsigned.crt
 docker/files/apache-selfsigned.key
 testingenv
 .env
+**/__pycache__/
