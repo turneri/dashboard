@@ -1,6 +1,8 @@
 inventory.yml
 docker/files/apache-selfsigned.crt
 docker/files/apache-selfsigned.key
+docker/files/turneri.cert.pem
+docker/files/turneri.key.pem
 testingenv
 .env
 **/__pycache__/
