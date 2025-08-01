@@ -46,10 +46,10 @@
 - name: Copy certificate
   copy:
     src: turneri.cert.pem
-    dest: /opt/apache/certs/apache-selfsigned.crt
+    dest: /opt/apache/certs/turneri.cert.pem
 
 - name: Copy key
   copy:
     src: turneri.key.pem
-    dest: /opt/apache/certs/apache-selfsigned.key
+    dest: /opt/apache/certs/turneri.key.pem
 
