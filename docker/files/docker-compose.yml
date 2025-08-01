@@ -49,24 +49,6 @@ services:
       - REDIS_PASSWORD
       - REDIS_URL
 
-  processor:
-    build: /opt/processor
-    container_name: processor
-    restart: unless-stopped
-    
-    depends_on:
-      - db
-      - cache
-    networks:
-      - default
-    ports:
-      - 8000:8000
-    env_file:
-      - .env
-    environment:
-      - REDIS_HOST
-      - REDIS_PASSWORD
-      - REDIS_URL
 
   pihole:
     container_name: pihole
@@ -91,3 +73,25 @@ services:
 
 volumes:
   db-data:
+
+
+### Processor implementation example ###
+
+#  processor:
+#    build: /opt/processor
+#    container_name: processor
+#    restart: unless-stopped
+#    
+#    depends_on:
+#      - db
+#      - cache
+#    networks:
+#      - default
+#    ports:
+#      - 8000:8000
+#    env_file:
+#      - .env
+#    environment:
+#      - REDIS_HOST
+#      - REDIS_PASSWORD
+#      - REDIS_URL
