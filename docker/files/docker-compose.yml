@@ -31,8 +31,8 @@ services:
     - 80:80
     - 443:443
    volumes:
-    - /opt/apache/conf/httpd.conf:/usr/local/apache2/conf/httpd.conf
-    - /opt/apache/conf/sites-available/000-default.conf:/usr/local/apache2/conf/extra/000-default.conf
+    - /opt/apache/conf/:/usr/local/apache2/conf/
+    - /opt/apache/conf/sites-available/:/usr/local/apache2/conf/extra/
     - /opt/apache/certs:/usr/local/apache2/conf/certs
     - /opt/apache/html:/usr/local/apache2/htdocs
 
