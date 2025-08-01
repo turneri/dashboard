@@ -21,7 +21,6 @@
 #    - role: processor
 #  tags: [processor]
 
-<<<<<<< HEAD
 - name: Deploy the processor
   hosts: webservers
   become: true
@@ -30,26 +29,6 @@
   roles:
     - role: processor
   tags: [processor]
-
-- name: Deploy the pihole
-  hosts: webservers
-  become: true
-  remote_user: ansible
-  gather_facts: yes
-  roles:
-    - role: pihole
-  tags: [pihole]
-    
-=======
->>>>>>> 82ad72f (Commented out processor initialisation)
-- name: Deploy docker compose cluster
-  hosts: webservers
-  become: true
-  remote_user: ansible
-  gather_facts: yes
-  roles:
-    - role: docker
-  tags: [docker]
 
 
 # Comment this out if you want to autostart the service
