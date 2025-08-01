@@ -50,27 +50,6 @@ services:
       - REDIS_URL
 
 
-  pihole:
-    container_name: pihole
-    image: pihole/pihole:latest
-    ports:
-      - "53:53/tcp"
-      - "53:53/udp"
-      - "8030:80"  # HTTP Port for admin panel access
-    env_file:
-      - .env    
-    environment:
-      TZ: 'Europe/Helsinki'
-      FTLCONF_webserver_api_password: "${PIHOLE_PASSWORD}"
-      FTLCONF_dns_listeningMode: 'all'
-    volumes:
-      - /opt/pihole/:/etc/pihole/
-    cap_add:
-      - SYS_NICE
-    restart: unless-stopped
-
-
-
 volumes:
   db-data:
 
