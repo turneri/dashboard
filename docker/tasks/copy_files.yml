@@ -41,15 +41,15 @@
 
 
 
-# Comment these out if not usin TLS
+# Comment these out if not usin TLS, Copy to match your keys, also change in 000-default.conf
 
 - name: Copy certificate
   copy:
-    src: apache-selfsigned.crt
+    src: turneri.cert.pem
     dest: /opt/apache/certs/apache-selfsigned.crt
 
 - name: Copy key
   copy:
-    src: apache-selfsigned.key
+    src: turneri.key.pem
     dest: /opt/apache/certs/apache-selfsigned.key
 

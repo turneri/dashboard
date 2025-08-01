@@ -2,3 +2,6 @@
   copy:
     src: ../.env
     dest: /home/ansible/
+    owner: ansible
+    group: ansible
+    mode: "0755"

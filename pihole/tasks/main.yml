@@ -1,2 +1,0 @@
-- name: Copy files to host
-  include_tasks: copy.yml

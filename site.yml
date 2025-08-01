@@ -10,25 +10,17 @@
   tags: [init]
 
 
+### Example of how to deploy your own flask app ###
 
-- name: Deploy the processor
-  hosts: webservers
-  become: true
-  remote_user: ansible
-  gather_facts: yes
-  roles:
-    - role: processor
-  tags: [processor]
+#- name: Deploy the processor
+#  hosts: webservers
+#  become: true
+#  remote_user: ansible
+#  gather_facts: yes
+#  roles:
+#    - role: processor
+#  tags: [processor]
 
-- name: Deploy the pihole
-  hosts: webservers
-  become: true
-  remote_user: ansible
-  gather_facts: yes
-  roles:
-    - role: pihole
-  tags: [pihole]
-    
 - name: Deploy docker compose cluster
   hosts: webservers
   become: true
@@ -39,8 +31,8 @@
   tags: [docker]
 
 
-# Comment this out if you want to autostart the service
-# To manually start (for constant log output) ssh ansible@your.server and run docker compose up
+#### Comment this out if you want to autostart the service ####
+#### To manually start (for constant log output) ssh ansible@your.server and run docker compose up ####
 
 #- name: Start the service
 #  hosts: webservers

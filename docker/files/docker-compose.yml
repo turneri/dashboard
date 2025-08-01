@@ -31,8 +31,8 @@ services:
     - 80:80
     - 443:443
    volumes:
-    - /opt/apache/conf/httpd.conf:/usr/local/apache2/conf/httpd.conf
-    - /opt/apache/conf/sites-available/000-default.conf:/usr/local/apache2/conf/extra/000-default.conf
+    - /opt/apache/conf/:/usr/local/apache2/conf/
+    - /opt/apache/conf/sites-available/:/usr/local/apache2/conf/extra/
     - /opt/apache/certs:/usr/local/apache2/conf/certs
     - /opt/apache/html:/usr/local/apache2/htdocs
 
@@ -49,45 +49,28 @@ services:
       - REDIS_PASSWORD
       - REDIS_URL
 
-  processor:
-    build: /opt/processor
-    container_name: processor
-    restart: unless-stopped
-    
-    depends_on:
-      - db
-      - cache
-    networks:
-      - default
-    ports:
-      - 8000:8000
-    env_file:
-      - .env
-    environment:
-      - REDIS_HOST
-      - REDIS_PASSWORD
-      - REDIS_URL
-
-  pihole:
-    container_name: pihole
-    image: pihole/pihole:latest
-    ports:
-      - "53:53/tcp"
-      - "53:53/udp"
-      - "8030:80"  # HTTP Port for admin panel access
-    env_file:
-      - .env    
-    environment:
-      TZ: 'Europe/Helsinki'
-      FTLCONF_webserver_api_password: "${PIHOLE_PASSWORD}"
-      FTLCONF_dns_listeningMode: 'all'
-    volumes:
-      - /opt/pihole/:/etc/pihole/
-    cap_add:
-      - SYS_NICE
-    restart: unless-stopped
-
-
 
 volumes:
   db-data:
+
+
+### Processor implementation example ###
+
+#  processor:
+#    build: /opt/processor
+#    container_name: processor
+#    restart: unless-stopped
+#    
+#    depends_on:
+#      - db
+#      - cache
+#    networks:
+#      - default
+#    ports:
+#      - 8000:8000
+#    env_file:
+#      - .env
+#    environment:
+#      - REDIS_HOST
+#      - REDIS_PASSWORD
+#      - REDIS_URL
