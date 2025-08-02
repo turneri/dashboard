@@ -45,11 +45,11 @@
 
 - name: Copy certificate
   copy:
-    src: turneri.cert.pem
-    dest: /opt/apache/certs/apache-selfsigned.crt
+    src: fullchain.pem
+    dest: /opt/apache/certs/fullchain.pem
 
 - name: Copy key
   copy:
-    src: turneri.key.pem
-    dest: /opt/apache/certs/apache-selfsigned.key
+    src: privkey.pem
+    dest: /opt/apache/certs/privkey.pem
 
