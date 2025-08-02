@@ -1,7 +1,0 @@
-- name: copy .env to server
-  copy:
-    src: ../.env
-    dest: /home/ansible/
-    owner: ansible
-    group: ansible
-    mode: "0755"
