@@ -61,7 +61,9 @@ services:
       - '8081:3001'
     volumes:
       - /:/mnt/host:ro
-
+    environment:
+      DASHDOT_ENABLE_CPU_TEMPS: 'true'
+      
 volumes:
   db-data:
 
