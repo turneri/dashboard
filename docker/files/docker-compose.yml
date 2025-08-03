@@ -52,6 +52,15 @@ services:
       - REDIS_PASSWORD
       - REDIS_URL
 
+  dash:
+    image: mauricenino/dashdot:latest
+    container_name: dash
+    restart: unless-stopped
+    privileged: true
+    ports:
+      - '8081:3001'
+    volumes:
+      - /:/mnt/host:ro
 
 volumes:
   db-data:
