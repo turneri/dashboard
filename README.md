@@ -16,6 +16,8 @@ After installation is finished:
 ./run
 ```
 
+**You need to create your own inventory.yml and .env files based on the example files**
+
 *(Note: Right now the autostart module is commented out. Check `site.yml` for more info.)*
 
 ## Processor module
