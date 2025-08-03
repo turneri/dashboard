@@ -6,6 +6,13 @@ Fully automated and fully containerised deployment on most Linux machines using 
 
 ## To run
 
+
+
+**You need to create your own inventory.yml and .env files based on the example files**
+
+
+
+
 ```bash
 chmod -x requirements
 ./requirements
@@ -16,7 +23,6 @@ After installation is finished:
 ./run
 ```
 
-**You need to create your own inventory.yml and .env files based on the example files**
 
 *(Note: Right now the autostart module is commented out. Check `site.yml` for more info.)*
 
