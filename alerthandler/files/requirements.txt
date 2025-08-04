@@ -1,8 +1,3 @@
 flask
-redis
-beautifulsoup4
 gunicorn
-redis[hiredis]
-paho-mqtt
-selenium
 requests
