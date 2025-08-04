@@ -4,6 +4,15 @@ A customisable dashboard for your homelab needs.
 
 Fully automated and fully containerised deployment on most Linux machines using Ansible Galaxy and Docker Compose.
 
+# Current features:
+- homarr dashboard
+- postgreSQL database
+- redis for caching
+- dash for casual system monitoring
+- apache HTTPS proxy
+- openobserve for more serious monitoring
+- mobile push notifications from openobserve alerts
+
 ## To run
 
 ```bash
