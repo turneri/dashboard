@@ -37,6 +37,12 @@
     src: 000-default.conf
     dest: /opt/apache/conf/sites-available/000-default.conf
 
+- name: Copy observer site config
+  copy:
+    src: observe.conf
+    dest: /opt/apache/conf/sites-available/observe.conf
+
+
 
 # Comment these out if not usin TLS, Copy to match your keys, also change in 000-default.conf
 
