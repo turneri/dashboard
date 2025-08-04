@@ -31,6 +31,16 @@
   tags: [docker]
 
 
+- name: Deploy the alerthandler
+  hosts: webservers
+  become: true
+  remote_user: ansible
+  gather_facts: yes
+  roles:
+    - role: alerthandler
+  tags: [alerthandler]
+
+
 #### Comment this out if you want to autostart the service ####
 #### To manually start (for constant log output) ssh ansible@your.server and run docker compose up ####
 

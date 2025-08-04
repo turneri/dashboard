@@ -65,17 +65,37 @@ services:
       DASHDOT_ENABLE_CPU_TEMPS: 'true'
 
   openobserve:
-      image: public.ecr.aws/zinclabs/openobserve:latest
-      restart: unless-stopped
-      env_file:
+    image: public.ecr.aws/zinclabs/openobserve:latest
+    container_name: openobserve
+    restart: unless-stopped
+    env_file:
       - .env
-      environment:
-        - ZO_ROOT_USER_EMAIL
-        - ZO_ROOT_USER_PASSWORD
-      ports:
-        - "5080:5080"
-      volumes:
-        - /opt/openobserve:/data
+    environment:
+      - ZO_ROOT_USER_EMAIL
+      - ZO_ROOT_USER_PASSWORD
+    ports:
+      - "5080:5080"
+    volumes:
+      - ./:/data
+
+  alerthandler:
+    build: /opt/alerthandler
+    container_name: alerthandler
+    restart: unless-stopped
+    
+    depends_on:
+      - db
+      - cache
+    networks:
+      - default
+    ports:
+      - 8010:8010
+    env_file:
+      - .env
+    environment:
+      - REDIS_HOST
+      - REDIS_PASSWORD
+      - REDIS_URL
 
 
 volumes:
