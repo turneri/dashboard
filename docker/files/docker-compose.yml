@@ -75,13 +75,11 @@ services:
       ports:
         - "5080:5080"
       volumes:
-        - data:/data
-
+        - /opt/openobserve:/data
 
 
 volumes:
   db-data:
-  data:
 
 ### Processor implementation example ###
 
