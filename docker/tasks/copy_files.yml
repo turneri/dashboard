@@ -11,23 +11,21 @@
     group: root
     mode: "0755"
   loop:
-    - html
     - conf/sites-available
     - certs
-    
+  
+- name: Create Openobserve folder
+  file:
+    path: "/opt/openobserve"
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
 
 - name: Copy docker-compatible Apache config
   copy:
     src: httpd.conf
     dest: /opt/apache/conf/httpd.conf
-
-- name: Copy index.html to container web root
-  copy:
-    src: index.html
-    dest: /opt/apache/html/index.html
-    owner: root
-    group: root
-    mode: '0644'
 
 - name: Copy main Apache config
   copy:
@@ -40,16 +38,15 @@
     dest: /opt/apache/conf/sites-available/000-default.conf
 
 
-
 # Comment these out if not usin TLS, Copy to match your keys, also change in 000-default.conf
 
 - name: Copy certificate
   copy:
-    src: fullchain.pem
-    dest: /opt/apache/certs/fullchain.pem
+    src: yourcert.pem
+    dest: /opt/apache/certs/yourcert.pem
 
 - name: Copy key
   copy:
-    src: privkey.pem
-    dest: /opt/apache/certs/privkey.pem
+    src: yourcert.pem
+    dest: /opt/apache/certs/yourcert.pem
 

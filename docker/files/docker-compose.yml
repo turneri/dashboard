@@ -63,10 +63,23 @@ services:
       - /:/mnt/host:ro
     environment:
       DASHDOT_ENABLE_CPU_TEMPS: 'true'
-      
+
+  openobserve:
+      image: public.ecr.aws/zinclabs/openobserve:latest
+      restart: unless-stopped
+      env_file:
+      - .env
+      environment:
+        - ZO_ROOT_USER_EMAIL
+        - ZO_ROOT_USER_PASSWORD
+      ports:
+        - "5080:5080"
+      volumes:
+        - /opt/openobserve:/data
+
+
 volumes:
   db-data:
-
 
 ### Processor implementation example ###
 
