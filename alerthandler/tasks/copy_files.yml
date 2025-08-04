@@ -1,0 +1,25 @@
+- name: Create alerthandler folders
+  file:
+    path: "/opt/alerthandler/app"
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Copy alerthandler source (including app folder)
+  copy:
+    src: app/
+    dest: /opt/alerthandler/app/
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Copy Dockerfile to alerthandler root
+  copy:
+    src: Dockerfile
+    dest: /opt/alerthandler
+
+- name: copy requirements.txt to alerthandler root
+  copy:
+    src: requirements.txt
+    dest: /opt/alerthandler
