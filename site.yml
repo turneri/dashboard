@@ -29,8 +29,8 @@
   tags: [alerthandler]
 
 
-#### Comment this out if you want to autostart the service ####
-#### To manually start (for constant log output) ssh ansible@your.server and run docker compose up ####
+#### Comment this out if you dont want to autostart the service ####
+#### To manually start, ssh ansible@your.server and run docker compose up ####
 
 #- name: Start the service
 #  hosts: webservers
