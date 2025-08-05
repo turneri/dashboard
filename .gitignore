@@ -3,3 +3,4 @@ docker/files/fullchain.pem
 docker/files/privkey.pem
 .env
 **/__pycache__/
+.ansible_facts_cache/
