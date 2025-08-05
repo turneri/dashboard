@@ -9,18 +9,6 @@
     - role: init
   tags: [init]
 
-
-### Example of how to deploy your own flask app ###
-
-#- name: Deploy the processor
-#  hosts: webservers
-#  become: true
-#  remote_user: ansible
-#  gather_facts: yes
-#  roles:
-#    - role: processor
-#  tags: [processor]
-
 - name: Deploy docker compose cluster
   hosts: webservers
   become: true
