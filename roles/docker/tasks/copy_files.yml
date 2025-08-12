@@ -22,7 +22,12 @@
     group: root
     mode: "0755"
 
-- name: Copy docker-compatible Apache config
+- name: Create Fail2Ban folder
+  file:
+    path: "/opt/fail2ban/config"
+    state: directory
+
+- name: Copy httpd.conf
   copy:
     src: httpd.conf
     dest: /opt/apache/conf/httpd.conf

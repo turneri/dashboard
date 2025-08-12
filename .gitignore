@@ -1,5 +1,6 @@
 inventory.yml
-docker/files/fullchain.pem
-docker/files/privkey.pem
-.env
+**.crt
+**.key
+**.pem
+**.env
 **/__pycache__/
