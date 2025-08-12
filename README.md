@@ -53,7 +53,7 @@ Remember to change the values in apache configurations accordingly. Check out "0
 
 you need to set up your fail2ban jails manually at the moment. 
 
-The configuration files can be found in /opt/fail2ban/config/fail2ban/jail.d and filter.d, after starting the service has been started at least once
+The configuration files can be found in /opt/fail2ban/config/fail2ban/jail.d and filter.d, after the service has been started at least once
 
 
 ## Current bugs
