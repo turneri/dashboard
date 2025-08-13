@@ -16,11 +16,12 @@ Fully automated and fully containerised deployment on most Linux machines using 
 
 ## To run
 
-
-
 **You need to create your own inventory.yml and .env files based on the example files**
 
+**Right now you need to set up the apache config manually by modifying the 000-default.conf to fit your needs**
 
+First you need to install the requirements
+=======
 
 
 ```bash
